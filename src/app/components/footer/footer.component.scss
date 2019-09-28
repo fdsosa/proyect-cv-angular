@@ -1,0 +1,124 @@
+@import '../header/variables';
+@import '../header/mixins';
+
+.contact{
+    @include size(flex, 100%, auto, center, stretch); 
+    flex-direction: column;
+    background-color: $bg-color-2;
+  
+    .title-section{
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-family: 'Sarabun', sans-serif;
+    }
+  
+    hr{
+      display: block;
+      margin: 0;
+      width: 100%;
+      border: solid 0.8px $bg-color-1;
+    }
+  
+    .row-2{
+      display: flex;
+      flex-direction: row;
+  
+      .left, .right{
+        background-color: $bg-color-2;
+        flex: 1;
+        flex-grow: 1;
+      }
+  
+      .left{
+        padding: 50px;
+        box-sizing: border-box;
+        border-right: solid 0.8px $bg-color-1;
+  
+        form{
+          text-align: right;
+  
+          button{
+            width: 60%;
+            padding: 15px 30px;
+            border: none;
+            background-color: $primary-color;
+            color: $bg-color-1;
+            box-sizing: border-box;
+            font-family: $principal-font;
+  
+            &:hover{
+              cursor: pointer;
+              transform: translate(-.1em,-.1em) ;
+              background-color: #0d1540;
+              box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+            }
+          }
+  
+          input[type=text] {
+            width: 60%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: none;
+            font-family: $principal-font;
+  
+            &:hover{
+              background-color: #DCE6EF;
+            }
+          }
+        }
+      }
+  
+      .right{
+        padding: 50px;
+        box-sizing: border-box;
+  
+        h3{
+          @include font-type(('Assistant', sans-serif), 23px);
+          margin: 0 0 5px 0;
+          font-weight: 300;
+        }
+  
+        h4{
+          font-family: 'Lato', sans-serif;
+          font-weight: 300;
+          text-transform: uppercase;
+          margin: 0;
+        }
+  
+        ul{
+          @include font-type(('Hind', sans-serif), 14px);
+          margin: 20px 0 60px 0;
+  
+          li{
+            margin-top: 1em;
+          }
+        }
+  
+        hr{
+          border: 0.6px inset #000;
+          margin: 0;
+          width: 60%;
+        }
+  
+        .social-bar-alt{
+  
+          ul{
+            margin: 20 0 0 5px;
+  
+            li{
+              display: inline-block;
+              font-size: 17px;
+              margin-right: 1.5em;
+              margin-top: 0;    
+              
+              i{
+                color: #000;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

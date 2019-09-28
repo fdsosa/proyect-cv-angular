@@ -1,0 +1,12 @@
+@mixin font-type($family, $size) {
+    font-family: $family;
+    font-size: $size;
+}
+
+@mixin size($disp, $wid, $hei, $jus-cont, $ali-it) {
+    display: $disp;
+    width: $wid;
+    height: $hei;
+    justify-content: $jus-cont;
+    align-items: $ali-it;
+}

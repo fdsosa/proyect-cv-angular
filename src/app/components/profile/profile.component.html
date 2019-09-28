@@ -1,0 +1,27 @@
+<section class="background-pic" id="bg">
+    <div class="profile" *ngIf="data">
+        <section class="profile-pic">
+            <img class="pic" src="../../../assets/profile-pic.jpg" alt="Foto de Perfil">
+        </section>
+        <section class="profile-info">
+            <div class="content-info" id="personal-data">
+                <h1>{{ data.name }}</h1>
+                <h4>{{ data.profession }}</h4>
+                <ul>
+                    <li>
+                        <span><b>Phone:</b></span><br>
+                        <span>{{ data.phone }}</span>
+                    </li>
+                    <li>
+                        <span><b>Email:</b></span><br>
+                        <span>{{ data.email }}</span>
+                    </li>
+                    <li>
+                        <span><b>Date of Birth:</b></span><br>
+                        <span>{{ data.birth }}</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</section>

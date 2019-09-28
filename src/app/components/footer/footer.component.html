@@ -1,0 +1,45 @@
+<section class="contact" id="contactSection" >
+    <h2 class="title-section" #titleSection>Contact Me</h2>
+    <hr>
+    <aside *ngIf="!dataPersonal">
+        Cargando...
+    </aside>
+    <aside class="row-2" *ngIf="dataPersonal">
+        <div class="left">
+            <!-- Contact FORM -->
+            <form class="" action="index.html" method="post" id="contactForm">
+                <input type="text" name="name" placeholder="Name"><br>
+                <input type="text" name="email" placeholder="Email"><br>
+                <input type="text" name="subject" placeholder="Subject"><br>
+                <input type="text" name="message" placeholder="Message"><br>
+                <button type="submit" form="contactForm" id="buttomForm">Submit</button>
+            </form>
+            </div>
+        <!-- Contact Section -->
+        <div class="right" id="info-contact" *ngIf="dataPersonal">
+            <h3> {{ dataPersonal.name }} </h3>
+            <h4> {{ dataPersonal.profession }} </h4>
+            <ul>
+                <li>
+                <span><b>Phone: </b></span>
+                <br/>
+                <span> {{ dataPersonal.phone }} </span>
+                </li>
+                <li>
+                <span><b>Email: </b></span>
+                <br/>
+                <span> {{ dataPersonal.email }} </span>
+                </li>
+            </ul>
+            <hr>
+            <!-- Social Networks -->
+            <div class="social-bar-alt" id="socialContainer-alt">
+                <ul>
+                    <li *ngFor="let item of dataSocial">
+                        <a :href="item.url"><i class="fab {{item.icon}}"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    </section>

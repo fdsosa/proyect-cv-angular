@@ -1,0 +1,44 @@
+@import '../header/variables';
+@import '../header/mixins';
+
+.presentation{
+    background-color: $bg-color-2;
+  
+    /* SOCIAL BAR SECTION */
+    .social-bar{
+      @include size(flex, 100%, 8vh, center, center); 
+      margin: auto;
+      background-color: $primary-color;
+      transition: all 800ms ease;
+  
+      ul{
+        display: flex;
+        list-style: none;
+        li{
+          margin: 20px 10px;
+          a{
+            padding: 5px 15px;
+            font-size: 22px;
+            color: $bg-color-1;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  
+  .text-present{
+    text-align: center;
+    padding: 100px 32%;
+    font-family: $principal-font;
+    opacity: 1; //change
+    transition: all 3s ease;
+  
+    p{
+      font-size: 20px;
+    }
+  }
+  
+  .text-present-animation{
+    opacity: 1;
+  }

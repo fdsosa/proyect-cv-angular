@@ -1,0 +1,15 @@
+<header id="header" class="header-index" [ngClass]="{'header-repos': router.url == 
+'/repo'}">
+    <nav>
+      <div class="title">
+        <h3>Federico Sosa</h3>
+      </div>
+      <!-- LINKS FOR PC -->
+      <div class="links">
+        <a routerLink="/index" routerLinkActive="active">Home</a>
+        <a routerLink="/repo" routerLinkActive="active-secondary">GitHub</a>
+        <a routerLink="/index">Skills</a>
+        <a routerLink="/index">Contact</a>
+      </div>
+    </nav>
+  </header>

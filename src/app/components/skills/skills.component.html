@@ -1,0 +1,24 @@
+<section class="skills" id="skillsSection" *ngIf= "data">
+    <h2 class="title-section">Skills</h2>
+    <hr class="line_skills">
+    <table>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Progress</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr *ngFor= "let item of data">
+                <td>{{ item.name }}</td>
+                <td>
+                    <div class="prog-bar-cont">
+                        <div class="prog-bar" [ngStyle]="{'clip-path': item.value}">
+                            <div class="background"></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</section>
