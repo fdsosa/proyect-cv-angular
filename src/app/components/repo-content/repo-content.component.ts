@@ -10,7 +10,7 @@ export class RepoContentComponent implements OnInit {
 
   data = undefined;
   
-  constructor(private apiDataService: ApiDataService) { }
+  constructor(public apiDataService: ApiDataService) { }
   
   getData(){
     this.apiDataService

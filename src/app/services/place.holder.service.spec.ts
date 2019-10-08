@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SettingsService } from '../server/node_modules/settings.service';
+import { PlaceHolderService } from './place.holder.service';
 
-describe('SettingsService', () => {
+describe('PlaceHolderService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SettingsService = TestBed.get(SettingsService);
+    const service: PlaceHolderService = TestBed.get(PlaceHolderService);
     expect(service).toBeTruthy();
   });
 });

@@ -54,17 +54,17 @@ img{
       flex-grow: 1;
       min-width: 500px;
       min-height: 500px;
-      opacity: 1; //cambiar
+      opacity: 0; //cambiar
       transition: all 2s ease;
     }
   
     .profile-info{
       width: 100%;
-      transform: translateX(0px);//cambiar translateX(50px);
+      transform: translateX(50px);//cambiar translateX(50px);
     }
   
     .profile-pic{
-      transform: translateX(0px);//cambiar translateX(-50px);
+      transform: translateX(-50px);//cambiar translateX(-50px);
   
       .pic{
         width: 100%;

@@ -1,22 +1,19 @@
 import { Directive, OnInit, ElementRef, Renderer2, Input, HostListener, AfterViewInit } from '@angular/core';
 
 @Directive({
-  selector: '[animate]'
+  selector: '[pHolder]'
 })
 
-export class ApiDirective implements OnInit{
+export class ApiDirective{
 
-  //@Input('animate') className: string;
+  constructor() { }
 
-  constructor(private elRef: ElementRef, private render: Renderer2) { }
-
-  
-
-  ngOnInit() {
-  }
-
-  ngAfterViewInit(){
-    
+  @Input() set pHolder(condition: boolean){
+    if(condition){
+      console.log('asies')
+    }else{
+      console.log('asinoes')
+    }
   }
 
 }

@@ -1,10 +1,10 @@
 <section class="background-pic" id="bg">
-    <div class="profile" *ngIf="data">
-        <section class="profile-pic">
+    <div class="profile"  >
+        <section class="profile-pic" [ngClass]="{'profile-animation': data}">
             <img class="pic" src="../../../assets/profile-pic.jpg" alt="Foto de Perfil">
         </section>
-        <section class="profile-info">
-            <div class="content-info" id="personal-data">
+        <section class="profile-info"  [ngClass]="{'profile-animation': data}">
+            <div class="content-info" id="personal-data" *ngIf="data">
                 <h1>{{ data.name }}</h1>
                 <h4>{{ data.profession }}</h4>
                 <ul>

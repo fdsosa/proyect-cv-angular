@@ -16,4 +16,5 @@ export class SettingsService {
       .get<object[]>('/assets/settings/navigation-links.json')
       .toPromise(); 
   }
+
 }
