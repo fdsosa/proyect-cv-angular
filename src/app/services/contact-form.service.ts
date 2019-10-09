@@ -11,7 +11,7 @@ export class ContactFormService {
   contactForm: Contact;
 
   //fix
-  readonly URL_API = 'http://localhost:3200/';
+  //readonly URL_API = 'http://localhost:3200/';
   readonly URL_API_ONLINE = 'https://cv-server-mongodb.herokuapp.com/';
 
   constructor(private http: HttpClient) {
@@ -28,7 +28,7 @@ export class ContactFormService {
 
   getForms(){
     console.log('control2')
-    return this.http.get(this.URL_API);
+    return this.http.get(this.URL_API_ONLINE);
   }
 
 }
