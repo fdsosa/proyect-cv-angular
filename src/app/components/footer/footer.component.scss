@@ -11,11 +11,12 @@
       text-transform: uppercase;
       font-weight: 500;
       font-family: 'Sarabun', sans-serif;
+      font-size: 28px;
     }
   
     hr{
       display: block;
-      margin: 0;
+      margin: auto;
       width: 100%;
       border: solid 0.8px $bg-color-1;
     }
@@ -86,20 +87,21 @@
         box-sizing: border-box;
   
         h3{
-          @include font-type(('Assistant', sans-serif), 23px);
+          @include font-type(('Assistant', sans-serif), 27px);
           margin: 0 0 5px 0;
           font-weight: 300;
         }
   
-        h4{
+        h6{
           font-family: 'Lato', sans-serif;
           font-weight: 300;
           text-transform: uppercase;
+          font-size: 21px;
           margin: 0;
         }
   
         ul{
-          @include font-type(('Hind', sans-serif), 14px);
+          @include font-type(('Hind', sans-serif), 16px);
           margin: 20px 0 60px 0;
   
           li{
@@ -120,7 +122,7 @@
   
             li{
               display: inline-block;
-              font-size: 17px;
+              font-size: 20px;
               margin-right: 1.5em;
               margin-top: 0;    
               
@@ -172,3 +174,62 @@
       }
     }
   }
+
+  @media (max-width: 1000px){
+    .row-2{
+      flex-direction: column !important;
+    
+      .left{
+  
+        form{
+          text-align: center !important;
+  
+          button{
+            width: 75% !important;
+          }
+  
+          input[type=text], textarea {
+            width: 75% !important;
+          }
+        }
+      }
+  
+      .right{
+        text-align: center;
+  
+        h3{
+          font-size: 26px !important;
+          font-weight: 600 !important;
+        }
+  
+        h6{
+          font-weight: 600 !important;
+        }
+  
+        ul{
+          margin: 20px 0 35px 0 !important;
+          padding: 0;
+  
+          li{
+            margin-top: 1em;
+            font-size: 16px !important;
+          }
+        }
+  
+        hr{
+          margin: auto !important;
+        }
+  
+        .social-bar-alt{
+  
+          ul{
+  
+            li{
+              font-size: 22px !important;
+              margin: 0 .7em !important;
+            }
+          }
+        }
+      }
+    }
+  }  

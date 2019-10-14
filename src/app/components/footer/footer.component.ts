@@ -41,11 +41,13 @@ export class FooterComponent implements OnInit {
 
   //FORM FUNCTION
   onSubmit(){
+    console.log('control1');
     this.submitted = true;
     if(this.contactForm.invalid){
       return;
     }
 
+    console.log('control2');
     this.contact = new Contact(this.contactForm.controls.name.value,
                                this.contactForm.controls.email.value,
                                this.contactForm.controls.subject.value,

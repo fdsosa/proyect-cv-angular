@@ -1,5 +1,5 @@
 <section class="contact" id="contactSection" *ngIf="dataPersonal">
-    <h2 class="title-section" #titleSection>Contact Me</h2>
+    <h2 class="title-section mt-4 mb-4" #titleSection>Contact Me</h2>
     <hr>
     <aside class="row-2">
         <div class="left">
@@ -8,7 +8,7 @@
                 <!-- name -->
                 <input type="text" formControlName="name" placeholder="Name">
                 <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                    <div *ngIf="f.name.errors.required">Name is required</div>
+                    <div *ngIf="f.name.errors.required"></div>Name is required</div>
                 </div>
                 <!-- email -->
                 <input type="text" formControlName="email" placeholder="Email">
@@ -32,8 +32,8 @@
             </div>
         <!-- Contact Section -->
         <div class="right" id="info-contact" *ngIf="dataPersonal">
-            <h3 *pHolder="dataPersonal"> {{ dataPersonal.name }} </h3>
-            <h4> {{ dataPersonal.profession }} </h4>
+            <h3> {{ dataPersonal.name }} </h3>
+            <h6> {{ dataPersonal.profession }} </h6>
             <ul>
                 <li>
                 <span><b>Phone: </b></span>
