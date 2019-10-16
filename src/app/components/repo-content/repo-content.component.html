@@ -1,12 +1,17 @@
 <section class="content">
+    <!-- PLACEHOLDER -->
     <div *ngIf="!data" class="repos-placeholder">
         <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
         <h3>Loading...</h3>
     </div>
+
+    <!-- REPOS -->
     <section class="repos" *ngIf="data">
-        <article class="repo" *ngFor="let repo of data">
-            <h3>{{ repo.name }}</h3>
-            <h4>URL: <a href={{repo.html_url}} target="_blank">{{ repo.html_url }}</a></h4>
-        </article>
+        <a href="{{repo.html_url}}" target="_blank" *ngFor="let repo of data">
+            <article class="repo" >
+                <h3>{{ repo.name }}</h3>
+                <h4>URL: {{ repo.html_url }}</h4>
+            </article>
+        </a>
     </section>
 </section>

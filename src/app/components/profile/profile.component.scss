@@ -34,7 +34,7 @@ img{
   
   
   .profile{
-    @include size(flex, 60%, 100%, center, flex-end); 
+    @include size(flex, 100%, 100%, center, flex-end); 
     box-sizing: border-box;
     margin: auto;
     position: absolute;
@@ -50,8 +50,6 @@ img{
     .profile-pic,  .profile-info{
       box-sizing: border-box;
       display: inline-block;
-      flex: 1;
-      flex-grow: 1;
       min-width: 500px;
       min-height: 500px;
       opacity: 0; //cambiar
@@ -59,7 +57,6 @@ img{
     }
   
     .profile-info{
-      width: 100%;
       transform: translateX(50px);//cambiar translateX(50px);
     }
   
@@ -98,6 +95,75 @@ img{
       }
     }
   }
+
+
+
+
+  /**   PROFILE CLASS FOR MOBILE   **/
+
+  .profile-mobile{
+    @include size(flex, 90%, 100%, center, center); 
+    box-sizing: border-box;
+    flex-direction: column;
+
+
+    .profile-pic,  .profile-info{
+      display: flex;
+      justify-content: center;
+      opacity: 0; //cambiar
+      transition: all 2s ease;
+    }  
+
+    .profile-info{
+      align-items: flex-start;
+      text-align: center;
+      transform: translateX(50px);//cambiar translateX(50px);
+
+      .content-info{
+        background-color: $bg-color-1;
+
+
+        ul{
+          @include font-type($principal-font, 16px);
+        }
+      
+        li{
+          margin-bottom: 20px;
+        }
+
+        h1{
+          @include font-type(('Assistant', sans-serif), 28px);
+          margin-bottom: 5px;
+          font-weight: bold;
+        }
+    
+        h4{
+          @include font-type(('Roboto', sans-serif), 18px);
+          text-transform: uppercase;
+          margin-bottom: 1rem;
+          font-weight: bold;
+
+        }
+      }
+    }
+
+    .profile-pic{
+      user-select: none;
+      align-items: flex-end;
+      transform: translateX(-50px);//cambiar translateX(50px);
+
+      .pic{
+        width: 100%;
+        filter: grayscale(100%);
+        user-select: none;
+      }
+    }
+
+    .profile-animation{
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
   
   .social-bar-animation{
     height: 8vh !important;
@@ -107,3 +173,26 @@ img{
     display: none;
     width: 100%;
   }
+
+  @media (max-width: 575.98px) { 
+    .profile-info{
+      width: 80% !important;
+    }
+
+    .profile-pic{
+      width: 80% !important;
+    }
+  }
+
+  // Large devices (desktops, 992px and up)
+  @media (min-width: 992px) and (max-width: 1199.98px) { 
+
+    .profile{
+      align-items: center !important;
+      
+      .profile-pic,  .profile-info{
+        min-width: 400px;
+        min-height: 400px;
+      }
+    }
+   }

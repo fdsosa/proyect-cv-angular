@@ -4,32 +4,36 @@
     <aside class="row-2">
         <div class="left">
             <!-- Contact FORM -->
-            <form class="needs-validation" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <form class="needs-validation" [formGroup]="contactForm" (ngSubmit)="onSubmit(toast)">
                 <!-- name -->
                 <input type="text" formControlName="name" placeholder="Name">
-                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                    <div *ngIf="f.name.errors.required"></div>Name is required</div>
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback-custom">
+                    <div *ngIf="f.name.errors.required">Name is required</div>
                 </div>
                 <!-- email -->
                 <input type="text" formControlName="email" placeholder="Email">
-                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback-custom">
                     <div *ngIf="f.email.errors.required">Email is required</div>
                     <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
                 </div>
                 <!-- subject -->
                 <input type="text" formControlName="subject" placeholder="Subject">
-                <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
+                <div *ngIf="submitted && f.subject.errors" class="invalid-feedback-custom">
                     <div *ngIf="f.subject.errors.required">Subject is required</div>
                 </div>
                 <!-- message -->
                 <textarea  formControlName="message" placeholder="Message"></textarea>
-                <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+                <div *ngIf="submitted && f.message.errors" class="invalid-feedback-custom">
                     <div *ngIf="f.message.errors.required">Message is required</div>
                     <div *ngIf="f.message.errors.minlength">Message must be at least 20 characters</div>
                 </div>
                 <button type="submit" id="buttomForm">Submit</button>
             </form>
-            </div>
+        </div>
+
+        <!-- Toast Form-->
+        <div class="toastForm align-items-center justify-content-center" #toast>Successful form submission</div>
+
         <!-- Contact Section -->
         <div class="right" id="info-contact" *ngIf="dataPersonal">
             <h3> {{ dataPersonal.name }} </h3>

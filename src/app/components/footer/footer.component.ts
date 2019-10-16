@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { ApiDataService } from '../../services/api-data.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ContactFormService } from '../../services/contact-form.service';
@@ -22,10 +22,12 @@ export class FooterComponent implements OnInit {
   contactForm: FormGroup;
   contact: Contact;
   submitted = false;
+  showToast: boolean;
 
   constructor(private api: ApiDataService,
               private formBuilder: FormBuilder,
-              private contactFormService: ContactFormService) { }
+              private contactFormService: ContactFormService,
+              private vcr: ViewContainerRef) { }
 
   ngOnInit() {
     this.getData(this.urlSocial);
@@ -40,22 +42,25 @@ export class FooterComponent implements OnInit {
   }
 
   //FORM FUNCTION
-  onSubmit(){
-    console.log('control1');
+  onSubmit(toastRef){
     this.submitted = true;
     if(this.contactForm.invalid){
       return;
     }
 
-    console.log('control2');
-    this.contact = new Contact(this.contactForm.controls.name.value,
-                               this.contactForm.controls.email.value,
-                               this.contactForm.controls.subject.value,
-                               this.contactForm.controls.message.value);
+    this.contact = new Contact(
+      this.contactForm.controls.name.value,
+      this.contactForm.controls.email.value,
+      this.contactForm.controls.subject.value,
+      this.contactForm.controls.message.value
+    );
 
 
-    this.contactFormService.postForm(this.contact)
-    this.resetForm(this.contactForm)
+    this.contactFormService.postForm(this.contact);
+    this.resetForm(this.contactForm);
+
+    toastRef.classList.add('toastForm-active');
+    setTimeout(() => { toastRef.classList.remove('toastForm-active'); }, 2000);
   }
 
   resetForm(form: FormGroup){

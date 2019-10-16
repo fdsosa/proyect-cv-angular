@@ -42,3 +42,10 @@
   .text-present-animation{
     opacity: 1;
   }
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 767.98px) { 
+  .text-present{
+    padding: 5rem;
+  }  
+}

@@ -14,9 +14,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PresentationComponent } from './components/presentation/presentation.component';
 import { SkillsComponent } from './components/skills/skills.component';
-import { ApiDirective } from './directives/api.directive';
 import { RepoContentComponent } from './components/repo-content/repo-content.component';
-import { PlaceHolderComponent } from './components/place-holder/place-holder.component' 
 
 const appRoutes: Routes = [
   {
@@ -44,9 +42,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     PresentationComponent,
     SkillsComponent,
-    ApiDirective,
-    RepoContentComponent,
-    PlaceHolderComponent
+    RepoContentComponent
   ],
   imports: [
     BrowserModule,

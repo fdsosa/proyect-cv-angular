@@ -9,6 +9,7 @@ import { Contact } from '../models/contact.form'
 export class ContactFormService {
 
   contactForm: Contact;
+  sendSucces: boolean = false;
 
   //fix
   //readonly URL_API = 'http://localhost:3200/';
@@ -19,11 +20,11 @@ export class ContactFormService {
   }
 
   postForm(contact: Contact){
-    this.http.post(this.URL_API_ONLINE, contact)
+    return this.http.post(this.URL_API_ONLINE, contact)
       .subscribe(
-        (response) => { console.log('ola'); },
-        (error) => { console.log('chao'); }
-      )
+        (response) => { return this.sendSucces },
+        (error) => { console.error(error) }
+      );
   }
 
   getForms(){

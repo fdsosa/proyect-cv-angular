@@ -6,8 +6,17 @@
     background-color: $bg-color-1;
     text-align: center;
     font-family: $principal-font;
+    font-weight: bold;
   }
   
+  .title-section{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 28px;
+  }
+
   .line_skills{
     display: block;
     width: 100%;
@@ -16,7 +25,7 @@
   }
   
   table{
-    width: 60%;
+    width: 70%;
     margin: 40px auto;
     border-spacing: 0;
   
@@ -30,11 +39,12 @@
     }
     
     th, td{
-      padding: 17px;
+      padding: 17px 0px;
     }
   
     th{
       height: 30px;
+      font-size: 19px;
       text-transform: uppercase;
     }
   
@@ -74,3 +84,10 @@
       }
     }
   }
+
+ // Small devices (landscape phones, 576px and up)
+@media (max-width: 767.98px) { 
+  table{
+    width: 100%;
+  }
+}

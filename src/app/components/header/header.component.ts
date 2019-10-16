@@ -10,7 +10,22 @@ import { Router } from '@angular/router';
 
 export class HeaderComponent{
 
+    menu_display = false;
+
     constructor(public router: Router) { 
         console.log(this.router.url);
+    }
+
+    showMenu(menuRef) {
+        if(this.menu_display) { 
+            this.menu_display = false;
+            menuRef.style.height = "0";
+            menuRef.style.opacity = "0";
+        }
+        else {
+            this.menu_display = true;
+            menuRef.style.height = "30vh";
+            menuRef.style.opacity = "1";
+        }
     }
 }

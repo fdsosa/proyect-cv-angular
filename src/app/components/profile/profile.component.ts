@@ -6,14 +6,12 @@ import { ApiDataService } from '../../services/api-data.service'
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
   section: string = 'datos-personales';
   data = undefined;
   show: boolean = false;
   
-  constructor(private apiDataService: ApiDataService) { }
-  
-  ngOnInit() {
+  constructor(private apiDataService: ApiDataService) {
     this.getData(this.section)
   }
 

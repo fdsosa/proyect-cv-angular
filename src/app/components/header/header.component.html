@@ -1,15 +1,28 @@
-<header id="header" class="header-index" [ngClass]="{'header-repos': router.url == 
-'/repo'}">
+<header widthController id="header navbar" class="header-index" [ngClass]="{'header-repos': router.url == '/repo'}">
     <nav>
       <div class="title">
-        <h3>Federico Sosa</h3>
+        <h3 class="navbar-brand">Federico Sosa</h3>
       </div>
       <!-- LINKS FOR PC -->
-      <div class="links">
+      <div class="links d-none d-md-flex">
         <a routerLink="/index" routerLinkActive="active">Home</a>
         <a routerLink="/repo" routerLinkActive="active-secondary">GitHub</a>
         <a routerLink="/index">Skills</a>
         <a routerLink="/index">Contact</a>
       </div>
+      <!-- MENU FOR MOBILE -->
+      <div class="menu-mob d-flex d-md-none" >
+        <a id="hamburger" (click)="showMenu(mobileMenu)" [ngClass]="{'show': !menu_display, 'hide': menu_display}" #hamburgerBar><i class="fas fa-bars"></i></a>
+        <a id="cross" (click)="showMenu(mobileMenu)" [ngClass]="{'hide': !menu_display, 'show': menu_display}" #cross><i class="fas fa-times"></i></a>
+      </div>
     </nav>
+    <!-- LINKS FOR MOBILE -->
+    <div class="links-mob d-md-none" [ngClass]="{'links-repos': router.url == '/repo'}" #mobileMenu>
+      <ul>
+        <li><a routerLink="/index" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/repo" routerLinkActive="active-secondary">GitHub</a></li>
+        <li><a routerLink="/index">Skills</a></li>
+        <li><a routerLink="/index">Contact</a></li>
+      </ul>
+    </div>
   </header>
