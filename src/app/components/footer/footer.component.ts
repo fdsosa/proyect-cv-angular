@@ -13,8 +13,6 @@ import { Contact } from '../../models/contact.form';
 export class FooterComponent implements OnInit {
 
   //API
-  urlSocial: string = 'social-networks';
-  urlPersonal: string = 'datos-personales';
   dataSocial = undefined;
   dataPersonal = undefined;
 
@@ -30,8 +28,7 @@ export class FooterComponent implements OnInit {
               private vcr: ViewContainerRef) { }
 
   ngOnInit() {
-    this.getData(this.urlSocial);
-    this.getData(this.urlPersonal);
+    this.getDataFooter();
 
     this.contactForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -71,16 +68,53 @@ export class FooterComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.contactForm.controls; }
 
+  //API
+  //OBTAIN DATA PERSONAL FROM API OR LS
+  getDataFooter() {
+    //IF PER NOT IN LOCALSTORAGE
+    if(!localStorage.getItem('name')) {
+      this.getData('datos-personales');
+    }
+    //IF PER IS IN LOCALSTORAGE
+    else{
+      this.dataPersonal = {
+        name: localStorage.getItem('name'),
+        profession: localStorage.getItem('profession'),
+        birth: localStorage.getItem('birth'),
+        phone: localStorage.getItem('phone'),
+        email: localStorage.getItem('email'),
+      }
+    }
+
+    //IF SOC NOT IN LOCALSTORAGE
+    if(!localStorage.getItem('social')) {
+      this.getData('social-networks');
+    }
+    //IF SOC IS IN LOCALSTORAGE
+    else{
+      this.dataSocial = JSON.parse(localStorage.getItem('social'));
+    }  
+  }
+
   //GET DATA FROM API
   getData(section: string){
     this.api
       .getData(section)
         .subscribe(
           res => {
-            if(section == this.urlSocial){
+            if(section == 'social-networks'){
               this.dataSocial = res;
+              console.log(res);
+              //SAVE IN LS
+              localStorage.setItem('social', JSON.stringify(this.dataSocial));
             }else{
               this.dataPersonal = res;
+              //SAVE IN LS
+              localStorage.setItem('name', this.dataPersonal.name);
+              localStorage.setItem('profession', this.dataPersonal.profession);
+              localStorage.setItem('phone', this.dataPersonal.phone);
+              localStorage.setItem('email', this.dataPersonal.email);
+              localStorage.setItem('birth', this.dataPersonal.birth);
             }
           },
           err =>{

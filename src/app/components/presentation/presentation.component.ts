@@ -8,47 +8,53 @@ import { ApiDataService } from '../../services/api-data.service'
 })
 export class PresentationComponent implements OnInit {
 
-  section: string = 'description';
-  sectionSocial: string= 'social-networks';
-  data = undefined;
+  dataPresent = undefined;
   dataSocial = undefined;
   
   constructor(private apiDataService: ApiDataService) { }
   
   ngOnInit() {
-    this.getData(this.section)
-    this.getData2(this.sectionSocial)
+    this.getDataPresentation();
   }
 
-  getData(sectionCode: string){
+  //where obtain data
+  getDataPresentation(){
+    //presentation
+    if (!localStorage.getItem('presentation')) {
+      this.getData('description');
+    }
+    else {
+      this.dataPresent = JSON.parse(localStorage.getItem('presentation'));
+    }
+    //social
+    if (!localStorage.getItem('social')) {
+      this.getData('social-networks');
+    }
+    else {
+      this.dataSocial = JSON.parse(localStorage.getItem('social'));
+    }
+  }
+
+  //obtain data from api
+  getData(section: string) {
     this.apiDataService
-      .getData(sectionCode)
+      .getData(section)
       .subscribe(
         res => {
-          this.data = res;
+          if (section == 'description') {
+            this.dataPresent = res;
+            //Save in LS
+            localStorage.setItem('presentation', JSON.stringify(this.dataPresent));
+          }
+          else{
+            this.dataSocial = res;
+            //Save in LS
+            localStorage.setItem('social', JSON.stringify(this.dataSocial));
+          }
         },
         err => {
           console.log(err);
         }
       );
-  }
-
-  getData2(sectionCode: string){
-    this.apiDataService
-      .getData(sectionCode)
-      .subscribe(
-        res => {
-          this.dataSocial = res;
-        },
-        err => {
-          console.log(err);
-        }
-      );
-  }
-
-  submitData(section: string) {
-    
-    this.getData(section);
-    return false;
   }
 }

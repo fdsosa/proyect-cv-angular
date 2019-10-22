@@ -1,4 +1,4 @@
-<section class="skills" id="skillsSection" *ngIf= "data">
+<section class="skills" id="skillsSection" *ngIf= "dataSkills">
     <h2 class="title-section mt-4 mb-4">Skills</h2>
     <hr class="line_skills">
     <table>
@@ -9,7 +9,7 @@
             </tr>
         </thead>
         <tfoot>
-            <tr *ngFor= "let item of data">
+            <tr *ngFor= "let item of dataSkills">
                 <td>{{ item.name }}</td>
                 <td>
                     <div class="prog-bar-cont">

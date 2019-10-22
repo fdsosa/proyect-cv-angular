@@ -8,24 +8,37 @@ import { ApiDataService } from '../../services/api-data.service'
 })
 export class SkillsComponent implements OnInit {
 
-  section: string = 'skills';
-  data = undefined;
+  dataSkills = undefined;
 
   constructor(private api: ApiDataService) { }
 
   ngOnInit() {
-    this.getData(this.section)
+    this.getDataSkills()
   }
 
-  getData(sectionCode: string){
+  //Where obtain data
+  getDataSkills() {
+    if (!localStorage.getItem('skills')) {
+      this.getData('skills');
+    }
+    else {
+      this.dataSkills = JSON.parse(localStorage.getItem('skills'));
+      console.log(this.dataSkills)
+    }
+  }
+
+  //Obtain data from API
+  getData(section: string){
     this.api
-      .getData(sectionCode)
+      .getData(section)
       .subscribe(
         res => {
-          this.data = res;
-          for (let item of this.data) {
+          this.dataSkills = res;
+          for (let item of this.dataSkills) {
             item.value = `inset(0 ${item.value}% 0 0)`;
           }
+          //Save in LS
+          localStorage.setItem('skills', JSON.stringify(this.dataSkills));
         },
 
         err => {

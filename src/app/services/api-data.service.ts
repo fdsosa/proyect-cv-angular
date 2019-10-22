@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiDataService {
-	URL: string = 'https://api-data-cv.herokuapp.com/api/';
-	//URL: string = 'http://localhost:3000/api/';
+	//URL: string = 'https://api-data-cv.herokuapp.com/api/';
+	URL: string = 'http://localhost:3000/api/';
 	
 	constructor(private http: HttpClient) { }
 
