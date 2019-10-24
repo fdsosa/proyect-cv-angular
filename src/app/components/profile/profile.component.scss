@@ -102,9 +102,10 @@ img{
   /**   PROFILE CLASS FOR MOBILE   **/
 
   .profile-mobile{
-    @include size(flex, 90%, 100%, center, center); 
+    @include size(flex, 100%, 100%, center, center); 
     box-sizing: border-box;
     flex-direction: column;
+    margin: 0 !important;
 
 
     .profile-pic,  .profile-info{
@@ -175,12 +176,33 @@ img{
   }
 
   @media (max-width: 575.98px) { 
-    .profile-info{
-      width: 80% !important;
+
+    .profile-mobile{
+      @include size(flex, 100%, 100%, center, center); 
+      box-sizing: border-box;
+      flex-direction: column;
+      margin: 0 !important;
+  
+      .profile-info{
+        width: 90% !important;
+      }
+
+      .profile-pic{
+        width: 90% !important;
+      }
     }
 
-    .profile-pic{
-      width: 80% !important;
+    .background-pic{
+      height: auto;
+      padding: 1rem 0;
+    }
+  }
+
+  // Medium devices
+  @media (min-width: 575.98px) and (max-width: 992px) { 
+    .background-pic{
+      height: auto;
+      padding: 1rem 0;
     }
   }
 

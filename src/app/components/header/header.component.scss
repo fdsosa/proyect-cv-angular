@@ -118,6 +118,8 @@ header{
             text-align: center;
             font-family: $principal-font;
             user-select: none;
+            margin: 0;
+            padding: 0;
 
             li{   
                 margin: 5px 0;
@@ -140,11 +142,6 @@ header{
             }
         }
         
-    }
-
-    .links-mob-animate{
-        opacity: 1;
-        height: auto;
     }
 
     nav{

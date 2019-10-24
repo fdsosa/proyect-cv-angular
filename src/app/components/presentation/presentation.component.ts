@@ -19,17 +19,19 @@ export class PresentationComponent implements OnInit {
 
   //where obtain data
   getDataPresentation(){
-    //presentation
+    //Obtain data from API
     if (!localStorage.getItem('presentation')) {
       this.getData('description');
     }
+    //Obtain data from LocalStorage
     else {
       this.dataPresent = JSON.parse(localStorage.getItem('presentation'));
     }
-    //social
+    //Obtain data from API
     if (!localStorage.getItem('social')) {
       this.getData('social-networks');
     }
+    //Obtain data from LocalStorage
     else {
       this.dataSocial = JSON.parse(localStorage.getItem('social'));
     }

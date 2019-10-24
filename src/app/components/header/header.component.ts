@@ -24,7 +24,7 @@ export class HeaderComponent{
         }
         else {
             this.menu_display = true;
-            menuRef.style.height = "30vh";
+            menuRef.style.height = "auto";
             menuRef.style.opacity = "1";
         }
     }

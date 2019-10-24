@@ -18,12 +18,13 @@ export class SkillsComponent implements OnInit {
 
   //Where obtain data
   getDataSkills() {
+    //Obtain from API
     if (!localStorage.getItem('skills')) {
       this.getData('skills');
     }
+    //Obtain from LocalStorage
     else {
       this.dataSkills = JSON.parse(localStorage.getItem('skills'));
-      console.log(this.dataSkills)
     }
   }
 

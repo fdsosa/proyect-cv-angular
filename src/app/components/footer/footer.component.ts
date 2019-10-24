@@ -1,6 +1,6 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiDataService } from '../../services/api-data.service';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ContactFormService } from '../../services/contact-form.service';
 import { Contact } from '../../models/contact.form';
 
@@ -11,7 +11,6 @@ import { Contact } from '../../models/contact.form';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
   //API
   dataSocial = undefined;
   dataPersonal = undefined;
@@ -22,14 +21,10 @@ export class FooterComponent implements OnInit {
   submitted = false;
   showToast: boolean;
 
-  constructor(private api: ApiDataService,
-              private formBuilder: FormBuilder,
-              private contactFormService: ContactFormService,
-              private vcr: ViewContainerRef) { }
+  constructor(private api: ApiDataService, private formBuilder: FormBuilder, private contactFormService: ContactFormService) { }
 
   ngOnInit() {
     this.getDataFooter();
-
     this.contactForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -37,14 +32,24 @@ export class FooterComponent implements OnInit {
       message: ['', [Validators.required, Validators.minLength(20)]]
     })
   }
+  
+  /**
+   * 
+   *  FORM 
+   *  
+   */
 
   //FORM FUNCTION
-  onSubmit(toastRef){
+  onSubmit(toastRef) {
+
     this.submitted = true;
+
+    //Control Validation
     if(this.contactForm.invalid){
       return;
     }
 
+    //Create from model
     this.contact = new Contact(
       this.contactForm.controls.name.value,
       this.contactForm.controls.email.value,
@@ -56,10 +61,12 @@ export class FooterComponent implements OnInit {
     this.contactFormService.postForm(this.contact);
     this.resetForm(this.contactForm);
 
+    //Add a toast
     toastRef.classList.add('toastForm-active');
     setTimeout(() => { toastRef.classList.remove('toastForm-active'); }, 2000);
   }
 
+  //Reset form
   resetForm(form: FormGroup){
     this.submitted = false;
     form.reset({name: '', email: '', subject: '', message: ''});
@@ -68,29 +75,29 @@ export class FooterComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.contactForm.controls; }
 
-  //API
-  //OBTAIN DATA PERSONAL FROM API OR LS
+
+   /**
+   * 
+   *  API 
+   *  
+   */
+
+  //Obtain data
   getDataFooter() {
-    //IF PER NOT IN LOCALSTORAGE
-    if(!localStorage.getItem('name')) {
+    //From API
+    if(!localStorage.getItem('profile')) {
       this.getData('datos-personales');
     }
-    //IF PER IS IN LOCALSTORAGE
+    //From LocalStorage
     else{
-      this.dataPersonal = {
-        name: localStorage.getItem('name'),
-        profession: localStorage.getItem('profession'),
-        birth: localStorage.getItem('birth'),
-        phone: localStorage.getItem('phone'),
-        email: localStorage.getItem('email'),
-      }
+      this.dataPersonal = JSON.parse(localStorage.getItem('profile'));
     }
 
-    //IF SOC NOT IN LOCALSTORAGE
+    //From API
     if(!localStorage.getItem('social')) {
       this.getData('social-networks');
     }
-    //IF SOC IS IN LOCALSTORAGE
+    //From LocalStorage
     else{
       this.dataSocial = JSON.parse(localStorage.getItem('social'));
     }  
@@ -110,11 +117,7 @@ export class FooterComponent implements OnInit {
             }else{
               this.dataPersonal = res;
               //SAVE IN LS
-              localStorage.setItem('name', this.dataPersonal.name);
-              localStorage.setItem('profession', this.dataPersonal.profession);
-              localStorage.setItem('phone', this.dataPersonal.phone);
-              localStorage.setItem('email', this.dataPersonal.email);
-              localStorage.setItem('birth', this.dataPersonal.birth);
+              localStorage.setItem('profile', JSON.stringify(this.dataPersonal));
             }
           },
           err =>{

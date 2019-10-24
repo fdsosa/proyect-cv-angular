@@ -29,14 +29,14 @@
     </div>
 
     <!-- PROFILE FOR MOBILE -->
-    <div class="container p-4 profile-mobile d-flex d-lg-none">
+    <div class="container p-1 profile-mobile d-flex d-lg-none">
         <div class="row justify-content-center profile-pic w-100" [ngClass]="{'profile-animation': dataProfile}">
-            <div class="col-xs-6 col-sm-8 col-md-6 p-0">
+            <div class="col-xs-12 col-sm-8 col-md-6 p-0">
                 <img class="pic" src="../../../assets/profile-pic.jpg" alt="Foto de Perfil">
             </div>    
         </div>     
         <div class="row justify-content-center profile-info w-100"  [ngClass]="{'profile-animation': dataProfile}">
-            <div class="col-xs-6 col-sm-8 col-md-6 content-info pt-4 pb-4" id="personal-data" *ngIf="dataProfile">
+            <div class="col-xs-12 col-sm-8 col-md-6 content-info pt-4 pb-4" id="personal-data" *ngIf="dataProfile">
                 <h1>{{ dataProfile.name }}</h1>
                 <h4>{{ dataProfile.profession }}</h4>
                 <ul>

@@ -47,5 +47,20 @@
 @media (max-width: 767.98px) { 
   .text-present{
     padding: 5rem;
+
+    h2{
+      margin-bottom: 1rem;
+    }
+  }  
+}
+
+// Extra Small devices
+@media (max-width: 575.98px) { 
+  .social-bar{
+    height: 11vh !important;
+  }  
+
+  .text-present{
+    padding: 5rem 2rem;
   }  
 }

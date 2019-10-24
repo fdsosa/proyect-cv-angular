@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiDataService } from '../../services/api-data.service'
 
 @Component({
@@ -7,31 +7,22 @@ import { ApiDataService } from '../../services/api-data.service'
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  section: string = 'datos-personales';
   dataProfile = undefined;
   show: boolean = false;
   
   constructor(private apiDataService: ApiDataService) {
-    this.getDataProfile(this.section)
+    this.getDataProfile()
   }
 
-  //OBTAIN DATA FROM API OR LS
-  getDataProfile(section: string){
-    //IF NOT IN LOCALSTORAGE
-    if(!localStorage.getItem('name')){
-      this.getData(section);
-      console.log('obtain from api');
+  //Obtain data
+  getDataProfile(){
+    //From API
+    if(!localStorage.getItem('profile')){
+      this.getData('datos-personales');
     }
-    //IF IT IS IN LOCALSTORAGE
+    //From LocalStorage
     else{
-      this.dataProfile = {
-        name: localStorage.getItem('name'),
-        profession: localStorage.getItem('profession'),
-        birth: localStorage.getItem('birth'),
-        phone: localStorage.getItem('phone'),
-        email: localStorage.getItem('email'),
-      }
-      console.log('obtain from ls' + this.dataProfile);
+      this.dataProfile = JSON.parse(localStorage.getItem('profile'));
     }
   }
 
@@ -43,11 +34,7 @@ export class ProfileComponent {
         res => {
           this.dataProfile = res;
           //SAVE IN LS
-          localStorage.setItem('name', this.dataProfile.name);
-          localStorage.setItem('profession', this.dataProfile.profession);
-          localStorage.setItem('phone', this.dataProfile.phone);
-          localStorage.setItem('email', this.dataProfile.email);
-          localStorage.setItem('birth', this.dataProfile.birth);
+          localStorage.setItem('profile', JSON.stringify(this.dataProfile));
         },
         err => {
           console.log(err);
